@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("New Channel");
 
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close) {
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         drawerList = (ListView) findViewById(R.id.drawer_setting);
         drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,drawerTitles));
@@ -105,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView imageView = (ImageView)inflateLinearLayout.findViewById(R.id.story_image);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.story));
-
-
 
         storyLinearLayout.addView(customView);
 

@@ -3,6 +3,7 @@
     package="samsung.membership.splash">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:name=".GlobalApplication"
@@ -25,7 +26,10 @@
             android:theme="@style/NoAction"/>
         <activity android:name=".KakaoSignupActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".AddActivity"/>
+        <activity android:name=".AddActivity"
+            android:theme="@style/NoAction"/>
+        <activity android:name=".AddActivity2"
+            android:theme="@style/NoAction"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

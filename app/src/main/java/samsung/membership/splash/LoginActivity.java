@@ -41,7 +41,7 @@ import java.util.Arrays;
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
 
     private static final int RC_SIGN_IN = 9001;
-    private SessionCallback callback;      //콜백 선언
+    private SessionCallback callback;
     private CallbackManager callbackManager;
     private GoogleApiClient mGoogleApiClient;
     private ProgressDialog mProgressDialog;
@@ -193,7 +193,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         @Override
         public void onSessionOpened() {
-            redirectSignupActivity();  // 세션 연결성공 시 redirectSignupActivity() 호출
+            redirectSignupActivity();
         }
 
         @Override
@@ -202,18 +202,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 Logger.e(exception);
             }
             Log.d("SESSION ERROR", "");
-            setContentView(R.layout.activity_login); // 세션 연결이 실패했을때
-        }                                            // 로그인화면을 다시 불러옴
+            setContentView(R.layout.activity_login);
+        }
     }
 
-    protected void redirectSignupActivity() {       //세션 연결 성공 시 SignupActivity로 넘김
+    protected void redirectSignupActivity() {
         final Intent intent = new Intent(this, KakaoSignupActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();
     }
 
-    protected void redirectMainActivity() {       //세션 연결 성공 시 SignupActivity로 넘김
+    protected void redirectMainActivity() {
         final Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
@@ -223,48 +223,36 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void handleSignInResult(GoogleSignInResult result) {
         Log.d("TAG", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            updateUI(true);
+            //updateUI(true);
             redirectMainActivity();
         } else {
-            // Signed out, show unauthenticated UI.
-            updateUI(false);
+            //updateUI(false);
         }
     }
-    // [END handleSignInResult]
 
-    // [START signIn]
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
     }
-    // [END signIn]
 
-    // [START signOut]
     private void signOut() {
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
-                        // [START_EXCLUDE]
-                        updateUI(false);
-                        // [END_EXCLUDE]
+                        //updateUI(false);
                     }
                 });
     }
-    // [END signOut]
 
-    // [START revokeAccess]
     private void revokeAccess() {
         Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
-                        // [START_EXCLUDE]
-                        updateUI(false);
-                        // [END_EXCLUDE]
+                        //updateUI(false);
                     }
                 });
     }
@@ -272,8 +260,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        // An unresolvable error has occurred and Google APIs (including Sign-In) will not
-        // be available.
         Log.d("TAG", "onConnectionFailed:" + connectionResult);
     }
 
