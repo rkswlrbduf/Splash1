@@ -3,7 +3,7 @@
     package="samsung.membership.splash">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".GlobalApplication"
@@ -13,8 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,14 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/NoAction"/>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/NoAction" />
         <activity android:name=".KakaoSignupActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".AddActivity"
-            android:theme="@style/NoAction"/>
-        <activity android:name=".AddActivity2"
-            android:theme="@style/NoAction"/>
+        <activity
+            android:name=".AddActivity"
+            android:theme="@style/NoAction" />
+        <activity
+            android:name=".AddActivity2"
+            android:theme="@style/NoAction" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -43,10 +44,11 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="7b3851a32fee691f0738cba6f978b86f1f44ab6a" />
+
+        <activity android:name=".ImageAdapter"></activity>
     </application>
 
 </manifest>
