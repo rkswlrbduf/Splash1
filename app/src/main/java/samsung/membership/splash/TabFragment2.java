@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 /**
  * Created by yumin on 2017-07-29.
  */
@@ -16,3 +17,5 @@ public class TabFragment2 extends Fragment {
         return inflater.inflate(R.layout.tab_fragment_2,container,false);
     }
 }
+
+
