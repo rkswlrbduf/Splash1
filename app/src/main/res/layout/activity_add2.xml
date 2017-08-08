@@ -4,35 +4,66 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <RelativeLayout
+        android:id="@+id/voice_layout"
         android:layout_width="match_parent"
-        android:id="@+id/toolbar"
-        android:background="#897F86"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:textSize="25dp"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#897F86"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="New Channel"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:minHeight="?attr/actionBarSize">
+
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="#FFFFFF"
-            android:text="New Channel"/>
+            android:layout_below="@id/tab_layout" />
+    </RelativeLayout>
 
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.design.widget.TabLayout
-        android:layout_below="@+id/toolbar"
-        android:id="@+id/tab_layout"
+    <RelativeLayout
+        android:id="@+id/guide_layout"
         android:layout_width="match_parent"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:alpha="0.9">
 
-    </android.support.design.widget.TabLayout>
+        <ImageView
+            android:id="@+id/guide_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#262626" />
 
-    <android.support.v4.view.ViewPager
-        android:layout_below="@id/tab_layout"
-        android:id="@+id/pager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:background="#000000"
+            android:text="Confirm"
+            android:textColor="#FFFFFF" />
+
+    </RelativeLayout>
 </RelativeLayout>

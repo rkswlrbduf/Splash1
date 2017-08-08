@@ -216,7 +216,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         final Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
-        finish();
+        LoginActivity.this.finish();
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
