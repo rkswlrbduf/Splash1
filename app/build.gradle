@@ -53,5 +53,7 @@ dependencies {
         transitive = true;
     }
     compile 'com.android.support:design:25.3.1'
+    compile files('libs/commons-net-3.3.jar')
+    compile files('libs/picasso-2.5.2.jar')
 }
     apply plugin: 'com.google.gms.google-services'

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="left"
     android:background="#E9E8E7"
-    tools:context="samsung.membership.splash.MainActivity">
+    tools:context="samsung.membership.server.RecyclerViewActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -20,7 +20,6 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 app:layout_scrollFlags="scroll|enterAlways"
-                android:background="#897F86"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentInsetStart="0dp"
@@ -31,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="New Channel"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="25dp" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
