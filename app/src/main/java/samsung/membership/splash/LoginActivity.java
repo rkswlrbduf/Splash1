@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
         if (!Session.getCurrentSession().isClosed()) {
-            redirectMainActivity();
+            redirectWifiCheckActivity();
         }
         //LoginManager.getInstance().
         /*if(!AccessToken.getCurrentAccessToken().isExpired()) {
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
 */
         if (AccessToken.getCurrentAccessToken() != null) {
-            redirectMainActivity();
+            redirectWifiCheckActivity();
         }
 
         callbackManager = CallbackManager.Factory.create();
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         Log.d("result", object.toString());
-                        redirectMainActivity();
+                        redirectWifiCheckActivity();
                     }
                 });
 
@@ -212,8 +212,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         finish();
     }
 
-    protected void redirectMainActivity() {
-        final Intent intent = new Intent(this, MainActivity.class);
+    protected void redirectWifiCheckActivity() {
+        final Intent intent = new Intent(this, WifiCheckActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         LoginActivity.this.finish();
@@ -224,7 +224,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
             //updateUI(true);
-            redirectMainActivity();
+            redirectWifiCheckActivity();
         } else {
             //updateUI(false);
         }

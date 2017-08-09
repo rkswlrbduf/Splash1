@@ -8,9 +8,9 @@ import com.squareup.picasso.Transformation;
  * Created by KyuYeol on 2017-08-05.
  */
 
-public class PicassoTransformations {
+public class  PicassoTransformations {
 
-    public static int targetWidth = 200;
+    public static int targetWidth = 1000;
 
     public static Transformation resizeTransformation = new Transformation() {
         @Override

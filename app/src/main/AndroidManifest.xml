@@ -4,25 +4,33 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/NoAction">
-        <activity android:name=".AddActivity2">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".WifiCheckActivity"
+            android:theme="@style/NoAction" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoAction" />
@@ -34,7 +42,7 @@
 
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".AddActivity2"
             android:theme="@style/NoAction" />
 
         <meta-data
@@ -54,6 +62,13 @@
             android:value="7b3851a32fee691f0738cba6f978b86f1f44ab6a" />
 
         <activity android:name=".ImageAdapter"></activity>
+        <receiver
+            android:name=".ShowWifiMonitor"
+            android:enabled="true"
+            android:priority="0">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
-
 </manifest>

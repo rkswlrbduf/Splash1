@@ -1,10 +1,10 @@
 package samsung.membership.splash;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,10 +25,13 @@ public class AddActivity2 extends AppCompatActivity {
     private ViewPager viewPager;
     private Toolbar toolbar;
     private RelativeLayout relativeLayout;
-    private RelativeLayout voiceLayout;
+    private RelativeLayout add2Layout;
     private Button button;
     private ImageView imageView;
     private int position;
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
 
     @Subscribe
     public void onActivityResult(ActivityResultEvent activityResultEvent){
@@ -42,7 +45,7 @@ public class AddActivity2 extends AppCompatActivity {
         BusProvider3.getInstance().post(new ActivityResultEvent(requestCode, resultCode, data));
     }
 
-    private boolean[] check = {true, true, true};
+    private boolean[] check = {true,true,true};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,8 +58,15 @@ public class AddActivity2 extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        editor = pref.edit();
+
+        check[0] = pref.getBoolean("Voice", true);
+        check[1] = pref.getBoolean("Gesture", true);
+        check[2] = pref.getBoolean("Face", true);
+
         relativeLayout = (RelativeLayout)findViewById(R.id.guide_layout);
-        voiceLayout = (RelativeLayout)findViewById(R.id.voice_layout);
+        add2Layout = (RelativeLayout)findViewById(R.id.add2_layout);
         imageView = (ImageView)findViewById(R.id.guide_image);
         button = (Button)findViewById(R.id.confirm);
         button.setOnClickListener(new View.OnClickListener() {
@@ -64,19 +74,25 @@ public class AddActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 switch (position) {
                     case 0:
-                        voiceLayout.setFocusable(true);
+                        add2Layout.setFocusable(true);
                         relativeLayout.setVisibility(View.INVISIBLE);
                         check[position] = false;
+                        editor.putBoolean("Voice", false);
+                        editor.apply();
                         break;
                     case 1:
-                        voiceLayout.setFocusable(true);
+                        add2Layout.setFocusable(true);
                         relativeLayout.setVisibility(View.INVISIBLE);
                         check[position] = false;
+                        editor.putBoolean("Gesture", false);
+                        editor.apply();
                         break;
                     case 2:
-                        voiceLayout.setFocusable(true);
+                        add2Layout.setFocusable(true);
                         relativeLayout.setVisibility(View.INVISIBLE);
                         check[position] = false;
+                        editor.putBoolean("Face", false);
+                        editor.apply();
                         break;
                 }
             }
@@ -88,6 +104,12 @@ public class AddActivity2 extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Face"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        if(check[0] == false) {
+            relativeLayout.setVisibility(View.INVISIBLE);
+            relativeLayout.setFocusable(false);
+            add2Layout.setFocusable(true);
+        }
+
         viewPager =(ViewPager)findViewById(R.id.pager);
         TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
@@ -98,12 +120,13 @@ public class AddActivity2 extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(check[tab.getPosition()]) {
-                    voiceLayout.setFocusable(false);
+                    add2Layout.setFocusable(false);
                     relativeLayout.setFocusable(true);
                     relativeLayout.setVisibility(View.VISIBLE);
                     //imageView.setImageDrawable(); // 이미지 받으면 설정
                 }
                 else {
+                    add2Layout.setFocusable(true);
                     relativeLayout.setVisibility(View.INVISIBLE);
                     relativeLayout.setFocusable(false);
                 }
